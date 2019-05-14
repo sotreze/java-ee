@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.com.caelum.financas.modelo.Conta;
-import br.com.caelum.financas.util.JPAUtil;
 
 public class TesteConta {
 	
@@ -17,7 +16,8 @@ public class TesteConta {
 		conta.setBanco("Caixa Econômica");
 		conta.setNumero("456");
 		
-		EntityManager em = new JPAUtil().getEntityManager();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("financas");
+		EntityManager em = emf.createEntityManager();
 		
 		
 		em.getTransaction().begin();
@@ -25,6 +25,7 @@ public class TesteConta {
 		em.getTransaction().commit();
 		
 		em.close();
+		emf.close();
 		
 	}
 
