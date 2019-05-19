@@ -19,8 +19,6 @@ public class TesteConta {
 		conta.setNumero("456");
 		
 		EntityManager em = new JPAUtil().getEntityManager();
-		
-		
 		em.getTransaction().begin();
 		
 		conta = em.find(Conta.class, 1);
