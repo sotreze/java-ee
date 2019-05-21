@@ -33,9 +33,9 @@ public class TesteMovimentacoesComCategoria {
 		
 		Movimentacao movimentacao2 = new Movimentacao();
 		movimentacao2.setData(Calendar.getInstance()); //hoje
-		movimentacao2.setDescricao("Viagem ao RJ");
-		movimentacao2.setTipo(TipoMovimentacao.SAIDA);
-		movimentacao2.setValor(new BigDecimal("300.0"));
+		movimentacao2.setDescricao("Outra viagem");
+		movimentacao2.setTipo(TipoMovimentacao.ENTRADA);
+		movimentacao2.setValor(new BigDecimal("600.0"));
 		movimentacao2.setCategorias(Arrays.asList(categoria1, categoria2));
 		
 		movimentacao2.setConta(conta);
@@ -43,11 +43,11 @@ public class TesteMovimentacoesComCategoria {
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
 		
-//		em.persist(categoria1);
-//		em.persist(categoria2);
-//		
-//		em.persist(movimentacao1);
-//		em.persist(movimentacao2);
+		em.persist(categoria1);
+		em.persist(categoria2);
+		
+		em.persist(movimentacao1);
+		em.persist(movimentacao2);
 		
 		Movimentacao movimentacao = em.find(Movimentacao.class, 
 				5);

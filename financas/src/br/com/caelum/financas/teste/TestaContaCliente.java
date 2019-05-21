@@ -29,7 +29,7 @@ public class TestaContaCliente {
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
 		
-		em.persist(cliente);
+//		em.persist(cliente);
 //		em.persist(cliente2);
 		
 		em.getTransaction().commit();
