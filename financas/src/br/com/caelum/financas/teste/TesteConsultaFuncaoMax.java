@@ -5,14 +5,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 import br.com.caelum.financas.modelo.Conta;
 import br.com.caelum.financas.modelo.Movimentacao;
 import br.com.caelum.financas.modelo.TipoMovimentacao;
 import br.com.caelum.financas.util.JPAUtil;
 
-public class TesteFuncoesJPQL {
+public class TesteConsultaFuncaoMax {
 	
 	public static void main(String[] args) {
 		
@@ -23,24 +22,18 @@ public class TesteFuncoesJPQL {
 		Conta conta = new Conta();
 		conta.setId(2);
 		
-	
 		
-		String jpql = "select avg(m.valor) from Movimentacao m where m.conta = :pConta " 
-		+ " and m.tipo = :pTipo " 
-		+ "group by day(m.data), month(m.data), year(m.data)";
-
+		String jpql = "select max(m.valor) from Movimentacao m where m.conta = :pConta" +
+		" and m.tipo = :pTipo" +
+		" order by m.valor desc";
 		
-		TypedQuery<Double> query = em.createQuery(jpql, Double.class);
-		
+		Query query = em.createQuery(jpql);
 		query.setParameter("pConta", conta);
 		query.setParameter("pTipo", TipoMovimentacao.ENTRADA);
 		
-		List<Double> medias = (List<Double>) query.getResultList();
+		BigDecimal maiorValor = (BigDecimal) query.getSingleResult();
 		
-		System.out.println("A média do dia 22 é: " + medias.get(0));
-		System.out.println("A média do dia 27 é: " + medias.get(1));
-		System.out.println("A média do dia 28 é: " + medias.get(2));
-
+		System.out.println("O maior valor é: " + maiorValor);
 		
 		em.getTransaction().commit();
 		em.close();
