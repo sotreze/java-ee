@@ -24,9 +24,12 @@ public class TesteFuncoesJPQL {
 		Conta conta = new Conta();
 		conta.setId(2);
 				
-		MovimentacaoDao dao = new MovimentacaoDao(em);
-
-		List<Double> medias = dao.getMediasPorDiaETipo(TipoMovimentacao.SAIDA, conta);
+		TypedQuery<Double> typedQuery = em.createNamedQuery("MediasPorDiaETipo", Double.class);
+		
+		typedQuery.setParameter("pConta", conta);
+		typedQuery.setParameter("pTipo", TipoMovimentacao.SAIDA);
+		
+		List<Double> medias = typedQuery.getResultList();
 
 		
 		for (Double media : medias) {
