@@ -22,6 +22,11 @@
 						</thead>
 						<tbody>
 							<tr>
+								<tr>
+									<td>${statistics.queryCacheHitCount}</td>
+									<td>${statistics.queryCacheMissCount}</td>
+									<td>${statistics.connectCount}</td>
+								</tr>
 								<td>Cache</td>
 								<!-- Hit -->
 								<td></td>
