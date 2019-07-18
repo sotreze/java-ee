@@ -25,7 +25,7 @@ public class AutorService {
 
 	    // uma regra de negócio deu errado
 		
-		throw new LivrariaException();
+		//throw new LivrariaException();
 	}
 
 
