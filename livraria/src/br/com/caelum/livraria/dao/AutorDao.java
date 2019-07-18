@@ -16,7 +16,7 @@ import javax.transaction.UserTransaction;
 import br.com.caelum.livraria.modelo.Autor;
 
 @Stateless
-@TransactionManagement(TransactionManagementType.BEAN)
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class AutorDao {
 
 	@PersistenceContext
@@ -30,20 +30,19 @@ public class AutorDao {
 		System.out.println("Autor foi criado");
 	}
 
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void salva(Autor autor) {
 		
 		System.out.println("salvando Autor " + autor.getNome());
 		
-		try {
-			tx.begin();
 			manager.persist(autor);
-			tx.commit();
-	
-		} catch (Exception e) {
-			e.printStackTrace();
-		}	
+		
 		System.out.println("salvou Autor " + autor.getNome());
+		
+		//chamada ao service externo que gera um erro
+		
+		
+		//throw new RuntimeException("Servico externo deu erro!");
 	}
 	
 	public List<Autor> todosAutores() {

@@ -22,8 +22,10 @@ public class AutorService {
 		// mais regras aqui
 		
 		dao.salva(autor);
-		 throw new RuntimeException(
-	                "[ERRO] Erro lançado para testar o rollback da transação.");
+
+	    // uma regra de negócio deu errado
+		
+		throw new LivrariaException();
 	}
 
 
