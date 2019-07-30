@@ -1,5 +1,6 @@
 package br.com.caelum.livraria.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -12,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Livro {
+public class Livro implements Serializable {
 
 	@Id
 	@GeneratedValue
@@ -21,7 +22,7 @@ public class Livro {
 	private String titulo;
 	private String isbn;
 	private double preco;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataLancamento = Calendar.getInstance();
 
 	@ManyToMany
