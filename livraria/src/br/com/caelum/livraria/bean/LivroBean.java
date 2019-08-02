@@ -57,10 +57,15 @@ public class LivroBean {
 		this.livro = new Livro();
 	}
 	
+	public String formAutor() {
+		System.out.println("Chamando o formulário do Autor");
+		return "autor?faces-redirect=true";
+	}
+	
 	public void comecaComDigitoUm(FacesContext fc, UIComponent component, Object value) throws ValidationException{
 		String valor = value.toString();
 		if(!valor.startsWith("1")) {
-			throw new ValidatorException(new FacesMessage("Deveria comeÃ§ar com 1"));
+			throw new ValidatorException(new FacesMessage("Deveria começar com 1"));
 		}
 	}
 
