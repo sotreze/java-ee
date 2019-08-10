@@ -48,8 +48,8 @@ public class AutorBean {
 		}
 	    this.autor = new Autor();
 	    
-	    //return new RedirectView("livro");
-	    return new RedirectView("autor");
+	    return new RedirectView("livro");
+	    //return new RedirectView("autor");
 	}
 	
 	/*public ForwardView gravar() {
