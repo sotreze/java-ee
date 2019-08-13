@@ -28,6 +28,9 @@ public class AutorBean {
 	
 	public void carregarAutorPeloId() {
 		this.autor = new DAO<Autor>(Autor.class).buscaPorId(autorId);	
+	    if (this.autor == null) {
+            this.autor = new Autor();
+	    }
 	}
 
 	public void setAutor(Autor autor) {
@@ -41,20 +44,24 @@ public class AutorBean {
 	public List<Autor> getAutores() {
 		return new DAO<Autor>(Autor.class).listaTodos();
 	}
-
-	/*public String gravar() {
+	
+	public String gravar() {
 		System.out.println("Gravando autor " + this.autor.getNome());
 
-		new DAO<Autor>(Autor.class).adiciona(this.autor);
-		
+		if (this.autor.getId() == null) {
+			new DAO<Autor>(Autor.class).adiciona(this.autor);
+		} else {
+			new DAO<Autor>(Autor.class).atualiza(this.autor);
+		}
+
 		this.autor = new Autor();
-		
-		//return "livro?faces-redirect=true";
-	}*/
+
+		return "livro?faces-redirect=true";
+	}
 	
 	//se quisermos um forward usamos a classe ForwardView e se quisermos redirect usamos RedirectView!
 	
-	public RedirectView gravar() {
+	/*public RedirectView gravar() {
 	    System.out.println("Gravando autor " + this.autor.getNome());
 	    
 	    //new DAO<Autor>(Autor.class).adiciona(this.autor);
@@ -67,7 +74,7 @@ public class AutorBean {
 	    
 	    return new RedirectView("livro");
 	    //return new RedirectView("autor");
-	}
+	}*/
 	
 	/*public ForwardView gravar() {
 	    System.out.println("Gravando autor " + this.autor.getNome());
