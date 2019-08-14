@@ -21,7 +21,23 @@ public class LivroBean {
 	private Livro livro = new Livro();
 	private Integer autorId;
 	
+	private Integer livroId;
 	
+	public Integer getLivroId() {
+		return livroId;
+	}
+
+	public void setLivroId(Integer livroId) {
+		this.livroId = livroId;
+	}
+	
+	public void carregarLivroPeloId() {
+		this.livro = new DAO<Livro>(Livro.class).buscaPorId(livroId);	
+	    if (this.livro == null) {
+            this.livro = new Livro();
+	    }
+	}
+
 	public Livro getLivro() {
 		return livro;
 	}
@@ -75,14 +91,14 @@ public class LivroBean {
 	}
 	
 	public String formAutor() {
-		System.out.println("Chamando o formulário do Autor");
+		System.out.println("Chamando o formulï¿½rio do Autor");
 		return "autor?faces-redirect=true";
 	}
 	
 	public void comecaComDigitoUm(FacesContext fc, UIComponent component, Object value) throws ValidationException{
 		String valor = value.toString();
 		if(!valor.startsWith("1")) {
-			throw new ValidatorException(new FacesMessage("Deveria começar com 1"));
+			throw new ValidatorException(new FacesMessage("Deveria comeï¿½ar com 1"));
 		}
 	}
 
