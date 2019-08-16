@@ -15,10 +15,6 @@ public class LoginBean {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-
-//	public void setUsuario(Usuario usuario) {
-//		this.usuario = usuario;
-//	}
 	
 	public String efetuaLogin() {
 		System.out.println("fazendo o login do usuário " + this.usuario.getEmail());	
