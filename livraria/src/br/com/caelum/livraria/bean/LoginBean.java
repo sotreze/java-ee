@@ -16,18 +16,17 @@ public class LoginBean {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+//	public void setUsuario(Usuario usuario) {
+//		this.usuario = usuario;
+//	}
 	
 	public String efetuaLogin() {
-		System.out.println("fazendo o login do usu√°rio" + this.usuario.getEmail());	
+		System.out.println("fazendo o login do usu·rio " + this.usuario.getEmail());	
 		
 		boolean existe = new UsuarioDao().existe(this.usuario);
 		if(existe) {
 			return "livro?faces-redirect=true";
-		}
-		
+		}	
 		
 		return null;
 		
