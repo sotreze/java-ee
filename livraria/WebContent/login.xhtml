@@ -10,7 +10,7 @@
 
 
 	<ui:define name="titulo">
-		Login
+		<p:outputPanel>Login</p:outputPanel>
 	</ui:define>
 	<ui:define name="conteudo">
 	
@@ -32,7 +32,7 @@
                     goodLabel="Bom" strongLabel="Forte" required="true" />
 					<p:message for="senha" id="messageSenha" />
 
-					<p:commandButton value="Login" action="#{loginBean.efetuaLogin}" update="@form" process="@form" />
+					<p:commandButton value="Efetue o Login" action="#{loginBean.efetuaLogin}" update="@form" process="@form" />
 				</h:panelGrid>
 			</p:fieldset>
 		</h:form>
