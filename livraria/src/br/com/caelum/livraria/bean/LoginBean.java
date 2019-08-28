@@ -19,7 +19,7 @@ public class LoginBean {
 	}
 	
 	public String efetuaLogin() {
-		System.out.println("fazendo o login do usuÔøΩrio " + this.usuario.getEmail());	
+		System.out.println("fazendo o login do usu√°rio " + this.usuario.getEmail());	
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		boolean existe = new UsuarioDao().existe(this.usuario);
@@ -29,7 +29,7 @@ public class LoginBean {
 		}
 		
 		context.getExternalContext().getFlash().setKeepMessages(true);
-		context.addMessage(null, new FacesMessage("Usu·rio n„o encontrado"));
+		context.addMessage(null, new FacesMessage("Usu√°rio n√£o encontrado"));
 		
 		return "login?faces-redirect=true";
 		
