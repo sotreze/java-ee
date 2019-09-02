@@ -1,5 +1,6 @@
 package br.com.caelum.livraria.bean;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.io.Serializable;
@@ -29,6 +30,8 @@ public class LivroBean implements Serializable {
 	private Integer livroId;
 
 	private List<Livro> livros;
+	
+	private List<String> generos = Arrays.asList("Romance", "Drama", "AÃ§Ã£o");
 	
 	private LivroDataModel livroDataModel = new LivroDataModel();
 	
@@ -114,7 +117,7 @@ public class LivroBean implements Serializable {
 	}
 	
 	public String formAutor() {
-		System.out.println("Chamando o formulário do Autor");
+		System.out.println("Chamando o formulï¿½rio do Autor");
 		return "autor?faces-redirect=true";
 	}
 	
@@ -124,7 +127,7 @@ public class LivroBean implements Serializable {
 		String valor = value.toString();
 		if (!valor.startsWith("1")) {
 			throw new ValidatorException(new FacesMessage(
-					"ISBN deveria começar com 1"));
+					"ISBN deveria comeï¿½ar com 1"));
 		}
 
 	}
@@ -136,20 +139,24 @@ public class LivroBean implements Serializable {
 	public void setAutorId(Integer autorId) {
 		this.autorId = autorId;
 	}
+	
+	public List<String> getGeneros() {
+	    return generos;
+	}
 
 	public boolean precoEhMenor(Object valorColuna, Object filtroDigitado, Locale locale) { // java.util.Locale
 
-        //tirando espaços do filtro
+        //tirando espaï¿½os do filtro
         String textoDigitado = (filtroDigitado == null) ? null : filtroDigitado.toString().trim();
 
         System.out.println("Filtrando pelo " + textoDigitado + ", Valor do elemento: " + valorColuna);
 
-        // o filtro é nulo ou vazio?
+        // o filtro ï¿½ nulo ou vazio?
         if (textoDigitado == null || textoDigitado.equals("")) {
             return true;
         }
 
-        // elemento da tabela é nulo?
+        // elemento da tabela ï¿½ nulo?
         if (valorColuna == null) {
             return false;
         }
@@ -159,7 +166,7 @@ public class LivroBean implements Serializable {
             Double precoDigitado = Double.valueOf(textoDigitado);
             Double precoColuna = (Double) valorColuna;
 
-            // comparando os valores, compareTo devolve um valor negativo se o value é menor do que o filtro
+            // comparando os valores, compareTo devolve um valor negativo se o value ï¿½ menor do que o filtro
             return precoColuna.compareTo(precoDigitado) < 0;
 
         } catch (NumberFormatException e) {
