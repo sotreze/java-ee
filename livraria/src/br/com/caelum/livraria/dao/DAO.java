@@ -97,28 +97,6 @@ public class DAO<T> {
 	    return lista;
 	}
 	
-//	public List<T> listaTodosPaginada(int firstResult, int maxResults, Map<String, Object> filters) {
-//	    EntityManager em = new JPAUtil().getEntityManager();
-//	    CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
-//	    Root<T> root = query.from(classe);
-//
-//	    final List<Predicate> predicates = new ArrayList<Predicate>();
-//
-//	    for (Entry<String, Object> e : filters.entrySet()) {
-//	        final String key = e.getKey();
-//	        final String value = (String) e.getValue();
-//
-//	        if (key != null && value != null) {
-//	              predicates.add(em.getCriteriaBuilder().like(root.<String> get(key), value + "%"));
-//	        }
-//	    }
-//	    query = query.where(predicates.toArray(new Predicate[predicates.size()]));
-//	    List<T> lista = em.createQuery(query).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
-//
-//	    em.close();
-//	    return lista;
-//	}
-	
 	
 	public int quantidadeDeElementos() {
         EntityManager em = new JPAUtil().getEntityManager();

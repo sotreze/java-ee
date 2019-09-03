@@ -117,7 +117,7 @@ public class LivroBean implements Serializable {
 	}
 	
 	public String formAutor() {
-		System.out.println("Chamando o formul�rio do Autor");
+		System.out.println("Chamando o formulário do Autor");
 		return "autor?faces-redirect=true";
 	}
 	
@@ -127,7 +127,7 @@ public class LivroBean implements Serializable {
 		String valor = value.toString();
 		if (!valor.startsWith("1")) {
 			throw new ValidatorException(new FacesMessage(
-					"ISBN deveria come�ar com 1"));
+					"ISBN deveria começar com 1"));
 		}
 
 	}
@@ -146,12 +146,12 @@ public class LivroBean implements Serializable {
 
 	public boolean precoEhMenor(Object valorColuna, Object filtroDigitado, Locale locale) { // java.util.Locale
 
-        //tirando espa�os do filtro
+        //tirando espaços do filtro
         String textoDigitado = (filtroDigitado == null) ? null : filtroDigitado.toString().trim();
 
         System.out.println("Filtrando pelo " + textoDigitado + ", Valor do elemento: " + valorColuna);
 
-        // o filtro � nulo ou vazio?
+        // o filtro é nulo ou vazio?
         if (textoDigitado == null || textoDigitado.equals("")) {
             return true;
         }

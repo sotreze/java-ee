@@ -101,7 +101,7 @@
 					<h:outputText value="#{livro.titulo}" />
 				</p:column>
 
-				<p:column headerText="Gênero" sortBy="#{livro.genero}"
+				<p:column headerText="Gênero" 
 					filterBy="#{livro.genero}" filterMatchMode="startsWith">
 					<f:facet name="filter">
 						<p:selectOneMenu onchange="PF('tabelaLivros').filter()">
@@ -114,13 +114,14 @@
 				</p:column>
 
 				<p:column headerText="ISBN" sortBy="#{livro.isbn}"
-					filterBy="#{livro.isbn}" filterMatchMode="contains">
+					>
 					<h:outputText value="#{livro.isbn}" />
 				</p:column>
 
-				<p:column headerText="Preço" sortBy="#{livro.preco}"
-					filterBy="#{livro.preco}"
+				<p:column headerText="Preço" sortBy="#{livro.preco}" 
 					filterFunction="#{livroBean.precoEhMenor}">
+					<!-- retirado do p:column -->
+					<!-- filterBy="#{livro.preco}"  -->
 					<h:outputText value="#{livro.preco}">
 						<f:convertNumber type="currency" pattern="R$ #0.00"
 							currencySymbol="R$" locale="pt_BR" />
