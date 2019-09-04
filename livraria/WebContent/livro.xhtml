@@ -16,6 +16,7 @@
 
 	<ui:define name="titulo">
 		Novo Livro
+
 	</ui:define>
 	<ui:define name="conteudo">
 
@@ -101,8 +102,8 @@
 					<h:outputText value="#{livro.titulo}" />
 				</p:column>
 
-				<p:column headerText="Gênero" 
-					filterBy="#{livro.genero}" filterMatchMode="startsWith">
+				<p:column headerText="Gênero" filterBy="#{livro.genero}"
+					filterMatchMode="startsWith">
 					<f:facet name="filter">
 						<p:selectOneMenu onchange="PF('tabelaLivros').filter()">
 							<f:selectItem itemLabel="Selecione..." itemValue="#{null}"
@@ -113,12 +114,11 @@
 					<h:outputText value="#{livro.genero}" />
 				</p:column>
 
-				<p:column headerText="ISBN" sortBy="#{livro.isbn}"
-					>
+				<p:column headerText="ISBN" sortBy="#{livro.isbn}">
 					<h:outputText value="#{livro.isbn}" />
 				</p:column>
 
-				<p:column headerText="Preço" sortBy="#{livro.preco}" 
+				<p:column headerText="Preço" sortBy="#{livro.preco}"
 					filterFunction="#{livroBean.precoEhMenor}">
 					<!-- retirado do p:column -->
 					<!-- filterBy="#{livro.preco}"  -->

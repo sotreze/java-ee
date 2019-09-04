@@ -166,7 +166,7 @@ public class LivroBean implements Serializable {
             Double precoDigitado = Double.valueOf(textoDigitado);
             Double precoColuna = (Double) valorColuna;
 
-            // comparando os valores, compareTo devolve um valor negativo se o value � menor do que o filtro
+            // comparando os valores, compareTo devolve um valor negativo se o value é menor do que o filtro
             return precoColuna.compareTo(precoDigitado) < 0;
 
         } catch (NumberFormatException e) {
