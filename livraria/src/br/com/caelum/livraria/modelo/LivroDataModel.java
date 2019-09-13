@@ -1,56 +1,48 @@
 package br.com.caelum.livraria.modelo;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortMeta;
 import org.primefaces.model.SortOrder;
 
-import br.com.caelum.livraria.dao.DAO;
+import br.com.caelum.livraria.dao.LivroDao;
 
 public class LivroDataModel extends LazyDataModel<Livro> {
-	
-	DAO<Livro> dao = new DAO<Livro>(Livro.class);
-	private DAO<Livro> daoLivro;
-	
-	public LivroDataModel() {
-	    super.setRowCount(dao.quantidadeDeElementos());
-	}
 
-	@Override
-	public List<Livro> load(int inicio, int quantidade, String campoOrdenacao, SortOrder sentidoOrdenacao, Map<String, Object> filtros) {
-	    String titulo = (String) filtros.get("genero");
+	private static final long serialVersionUID = 1L;
+	@Inject
+    private LivroDao livroDao;
 
-	   List<Livro> data = dao.listaTodosPaginada(inicio, quantidade, "genero", titulo);
-	
-	 // sort
-        if (campoOrdenacao != null) {
-            Collections.sort(data, new LazySorter(campoOrdenacao, sentidoOrdenacao));
-        }
+    @PostConstruct
+    void init(){
+        super.setRowCount(livroDao.contaTodos());
+    }
 
-        return data;
-	}
-	
-	
 //    @Override
-//    public List<Livro> load(int first, int pageSize, String sortField, SortOrder sortOrder,
-//            Map<String, Object> filters) {
+//    public List<Livro> load(int first, int pageSize, List<SortMeta> multiSortMeta, Map<String, Object> filters) {
+//        List<String> colunas = new ArrayList<String>();
+//        List<String> valores = new ArrayList<String>();
 //
-//        Set<String> keySet = filters.keySet();
-//        String valorDigitado = null;
-//        String campoFiltrado = null;
-//        for (String key : keySet) {
-//            if (filters.containsKey(key))
-//                valorDigitado = (String) filters.get(key);
-//                campoFiltrado = key;
-//        }
+//        for (Entry<String, Object> entry : filters.entrySet()) {
+//            colunas.add(entry.getKey());
+//            valores.add(entry.getValue().toString());
+//        } 
 //
-//        return dao.listaTodosPaginada(first, pageSize, campoFiltrado, valorDigitado);
-//
+//        return this.livroDao.listaTodosPaginada(first, pageSize, colunas, valores);
 //    }
-	
-	
-	
+
+    @Override
+    public List<Livro> load(int inicio, int quantidade, String campoOrdenacao, SortOrder sentidoOrdenacao, Map<String, Object> filtros) {
+        String titulo = (String) filtros.get("titulo");
+        return this.livroDao.listaTodosPaginada(inicio, quantidade, "titulo", titulo);
+    }
+    
+    
 }
