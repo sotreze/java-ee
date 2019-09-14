@@ -51,8 +51,8 @@ public class LivroDao implements Serializable {
         return dao.buscaPorId(id);
     }
 
-	public List<Livro> listaTodosPaginada(int inicio, int quantidade, String string, String titulo) {
-		return dao.listaTodosPaginada(inicio, quantidade);
-	}
+//	public List<Livro> listaTodosPaginada(int inicio, int quantidade, String string, String titulo) {
+//		return dao.listaTodosPaginada(inicio, quantidade);
+//	}
 
 }

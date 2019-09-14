@@ -27,8 +27,9 @@ public class Livro implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Calendar dataLancamento = Calendar.getInstance();
 
-	@ManyToMany //lazy
+	
 	//@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany //lazy
 	private List<Autor> autores = new ArrayList<Autor>();
 
 	public List<Autor> getAutores() {

@@ -49,6 +49,10 @@ public class LivroBean implements Serializable {
 	public LivroDataModel getLivroDataModel() {
 		return livroDataModel;
 	}
+	
+    public void setLivroDataModel(LivroDataModel livroDataModel) {
+        this.livroDataModel = livroDataModel;
+    }
 
 	public Integer getLivroId() {
 		return livroId;
@@ -60,9 +64,9 @@ public class LivroBean implements Serializable {
 	
 	public void carregarLivroPeloId() {
 		this.livro = livroDao.buscaPorId(this.livro.getId());	
-//	    if (this.livro == null) {
-//            this.livro = new Livro();
-//	    }
+	    if (this.livro == null) {
+            this.livro = new Livro();
+	    }
 	}
 
 	public Livro getLivro() {
@@ -75,7 +79,6 @@ public class LivroBean implements Serializable {
 	
 	public List<Autor> getAutores() {
 		return autorDao.listaTodos();
-		//return new DAO<Autor>(Autor.class).listaTodos();
 	}
 	
 	public List<Autor> getAutoresDoLivro() {
