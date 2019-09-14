@@ -6,21 +6,18 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<ui:composition template="_template.xhtml">
+	<ui:composition template="_template.xhtml">
+	
+	
 
-	<ui:define name="titulo">
-		<p:outputPanel>Vendas</p:outputPanel>
-	</ui:define>
+		<ui:define name="titulo">
+			<p:outputPanel>Vendas</p:outputPanel>
+		</ui:define>
 
-	<ui:define name="conteudo">
+		<ui:define name="conteudo">
+			<p:chart type="bar" model="#{vendasBean.vendasModel}" style="height:300px"/>
+		</ui:define>
 
-		<p:chart type="bar" model="#{vendasBean.vendasModel}" style="height:300px" />
+	</ui:composition>
 
-	</ui:define>
-
-</ui:composition>
-
-<ui:define name="texto">
-  Cadastro de Autores
-</ui:define>
 </html>

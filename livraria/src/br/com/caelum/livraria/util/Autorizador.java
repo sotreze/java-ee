@@ -14,10 +14,10 @@ public class Autorizador implements PhaseListener {
 
 	@Override
 	public void afterPhase(PhaseEvent evento) {
-		
+
 		FacesContext context = evento.getFacesContext();
 		String nomePagina = context.getViewRoot().getViewId();
-		
+	
 		System.out.println(nomePagina);
 		
 		if("/login.xhtml".equals(nomePagina)) {
@@ -30,12 +30,12 @@ public class Autorizador implements PhaseListener {
 			return;
 		}
 		
-		//redirecionamento par login.xhtml
+		//redirecionamento para login.xhtml
 		
 		NavigationHandler handler = context.getApplication().getNavigationHandler();
 		handler.handleNavigation(context, null, "/login?faces-redirect=true");
 		context.renderResponse();
-	}
+	} 
 
 	@Override
 	public void beforePhase(PhaseEvent event) {

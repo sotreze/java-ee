@@ -11,48 +11,36 @@ import br.com.caelum.livraria.modelo.Livro;
 
 public class LivroDao implements Serializable {
 
-    private static final long serialVersionUID = -6662277994148943606L;
+	private static final long serialVersionUID = 1L;
 
-    private DAO<Livro> dao;
+	@Inject
+	EntityManager em;
+	
+	private DAO<Livro> dao;
+	
+	@PostConstruct
+	void init() {
+		this.dao = new DAO<Livro>(this.em, Livro.class);
+	}
 
-    public int contaTodos() {
-        return dao.contaTodos();
-    }
+	public Livro buscaPorId(Integer livroId) {
+		return this.dao.buscaPorId(livroId);
+	}
 
-    public List<Livro> listaTodosPaginada(int firstResult, int maxResults, List<String> colunas, List<String> valores) {
-        return dao.listaTodosPaginada(firstResult, maxResults, colunas, valores);
-    }
+	public void adiciona(Livro livro) {
+		this.dao.adiciona(livro);
+	}
 
-    @Inject
-    private EntityManager entityManager;
+	public void atualiza(Livro livro) {
+		this.dao.atualiza(livro);
+	}
 
-    @PostConstruct
-    public void init() {
-        this.dao = new DAO<Livro>(entityManager, Livro.class);
-    }
+	public void remove(Livro livro) {
+		this.dao.remove(livro);
+	}
 
-    public void adiciona(Livro t) {
-        dao.adiciona(t);
-    }
-
-    public void remove(Livro t) {
-        dao.remove(t);
-    }
-
-    public void atualiza(Livro t) {
-        dao.atualiza(t);
-    }
-
-    public List<Livro> listaTodos() {
-        return dao.listaTodos();
-    }
-
-    public Livro buscaPorId(Integer id) {
-        return dao.buscaPorId(id);
-    }
-
-//	public List<Livro> listaTodosPaginada(int inicio, int quantidade, String string, String titulo) {
-//		return dao.listaTodosPaginada(inicio, quantidade);
-//	}
+	public List<Livro> listaTodos() {
+		return this.dao.listaTodos();
+	}
 
 }

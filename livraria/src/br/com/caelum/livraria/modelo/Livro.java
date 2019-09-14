@@ -16,20 +16,19 @@ import javax.persistence.TemporalType;
 @Entity
 public class Livro implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Integer id;
 
 	private String titulo;
-	private String genero;
 	private String isbn;
 	private double preco;
 	@Temporal(TemporalType.DATE)
 	private Calendar dataLancamento = Calendar.getInstance();
 
-	
-	//@ManyToMany(fetch=FetchType.EAGER)
-	@ManyToMany //lazy
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Autor> autores = new ArrayList<Autor>();
 
 	public List<Autor> getAutores() {
@@ -57,14 +56,6 @@ public class Livro implements Serializable {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}
-		
-	public String getGenero() {
-		return genero;
-	}
-
-	public void setGenero(String genero) {
-		this.genero = genero;
 	}
 
 	public String getIsbn() {
