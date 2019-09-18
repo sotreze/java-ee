@@ -78,20 +78,20 @@ public class DAO<T> implements Serializable {
         return lista;
     }
 
-//    public List<T> listaTodosPaginada(int firstResult, int maxResults, List<String> colunas, List<String> valores) {
-//        CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
-//        Root<T> root = query.from(classe);
-//        if(valores != null && !valores.isEmpty() && colunas != null && !colunas.isEmpty() && colunas.size() == valores.size()) {
-//            List<Predicate> predicates = new ArrayList<Predicate>();
-//            for (int i = 0; i < colunas.size(); i++) {
-//                predicates.add(em.getCriteriaBuilder().like(root.<String>get(colunas.get(i)), valores.get(i) + "%"));
-//            }
-//
-//            query = query.where(predicates.toArray(new Predicate[predicates.size()]));
-//        }
-//
-//        List<T> lista = em.createQuery(query).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
-//
-//        return lista;
-//    }
+    public List<T> listaTodosPaginada(int firstResult, int maxResults, List<String> colunas, List<String> valores) {
+        CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
+        Root<T> root = query.from(classe);
+        if(valores != null && !valores.isEmpty() && colunas != null && !colunas.isEmpty() && colunas.size() == valores.size()) {
+            List<Predicate> predicates = new ArrayList<Predicate>();
+            for (int i = 0; i < colunas.size(); i++) {
+                predicates.add(em.getCriteriaBuilder().like(root.<String>get(colunas.get(i)), valores.get(i) + "%"));
+            }
+
+            query = query.where(predicates.toArray(new Predicate[predicates.size()]));
+        }
+
+        List<T> lista = em.createQuery(query).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+
+        return lista;
+    }
 }

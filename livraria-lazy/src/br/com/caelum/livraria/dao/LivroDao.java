@@ -19,9 +19,9 @@ public class LivroDao implements Serializable {
         return dao.contaTodos();
     }
 
-//    public List<Livro> listaTodosPaginada(int firstResult, int maxResults, List<String> colunas, List<String> valores) {
-//        return dao.listaTodosPaginada(firstResult, maxResults, colunas, valores);
-//    }
+    public List<Livro> listaTodosPaginada(int firstResult, int maxResults, List<String> colunas, List<String> valores) {
+        return dao.listaTodosPaginada(firstResult, maxResults, colunas, valores);
+    }
 
     @Inject
     private EntityManager entityManager;
@@ -54,5 +54,7 @@ public class LivroDao implements Serializable {
 //	public List<Livro> listaTodosPaginada(int inicio, int quantidade, String string, String titulo) {
 //		return dao.listaTodosPaginada(inicio, quantidade);
 //	}
+    
+    
 
 }

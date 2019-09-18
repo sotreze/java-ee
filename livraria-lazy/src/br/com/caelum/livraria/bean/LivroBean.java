@@ -16,6 +16,7 @@ import br.com.caelum.livraria.dao.AutorDao;
 import br.com.caelum.livraria.dao.LivroDao;
 import br.com.caelum.livraria.modelo.Autor;
 import br.com.caelum.livraria.modelo.Livro;
+import br.com.caelum.livraria.modelo.LivroDataModel;
 
 @Named
 @ViewScoped //javax.faces.view.ViewScoped
@@ -30,6 +31,9 @@ public class LivroBean implements Serializable {
 	
 	@Inject
 	private AutorDao autorDao; //CDI faz new AutorDao() e injeta
+	
+	@Inject
+	private LivroDataModel livroDataModel;
 	
 	private Integer autorId;
 	
@@ -46,6 +50,14 @@ public class LivroBean implements Serializable {
 //	public void setLivroId(Integer livroId) {
 //		this.livroId = livroId;
 //	}
+	
+    public LivroDataModel getLivroDataModel() {
+        return livroDataModel;
+    }
+
+    public void setLivroDataModel(LivroDataModel livroDataModel) {
+        this.livroDataModel = livroDataModel;
+    }
 	
 	public void carregarLivroPeloId() {
 		this.livro = livroDao.buscaPorId(this.livro.getId());	

@@ -96,97 +96,97 @@
 		<h:form id="formTabelaLivros">
 			<!-- Início LazyLoading -->
 
-			<!-- 			<p:dataTable value="#{livroBean.livroDataModel}" -->
-			<!-- 				widgetVar="tabelaLivros" var="livro" id="tabelaLivros" -->
-			<!-- 				paginator="true" rows="5" lazy="true"> -->
-			<!-- 				<p:column headerText="Título" sortBy="#{livro.titulo}" -->
-			<!-- 					filterBy="#{livro.titulo}" filterMatchMode="startsWith"> -->
-			<!-- 					<h:outputText value="#{livro.titulo}" /> -->
-			<!-- 				</p:column> -->
+						<p:dataTable value="#{livroBean.livroDataModel}"
+							widgetVar="tabelaLivros" var="livro" id="tabelaLivros"
+							paginator="true" rows="5" lazy="true">
+							<p:column headerText="Título" sortBy="#{livro.titulo}"
+								filterBy="#{livro.titulo}" filterMatchMode="startsWith">
+								<h:outputText value="#{livro.titulo}" />
+							</p:column>
 
-			<!-- 				<p:column headerText="Gênero" filterBy="#{livro.genero}" -->
-			<!-- 					filterMatchMode="startsWith"> -->
-			<!-- 					<f:facet name="filter"> -->
-			<!-- 						<p:selectOneMenu onchange="PF('tabelaLivros').filter()"> -->
-			<!-- 							<f:selectItem itemLabel="Selecione..." itemValue="#{null}" -->
-			<!-- 								noSelectionOption="true" /> -->
-			<!-- 							<f:selectItems value="#{livroBean.generos}" /> -->
-			<!-- 						</p:selectOneMenu> -->
-			<!-- 					</f:facet> -->
-			<!-- 					<h:outputText value="#{livro.genero}" /> -->
-			<!-- 				</p:column> -->
+							<p:column headerText="Gênero" filterBy="#{livro.genero}"
+								filterMatchMode="startsWith">
+								<f:facet name="filter">
+									<p:selectOneMenu onchange="PF('tabelaLivros').filter()">
+										<f:selectItem itemLabel="Selecione..." itemValue="#{null}"
+											noSelectionOption="true" />
+										<f:selectItems value="#{livroBean.generos}" />
+									</p:selectOneMenu>
+								</f:facet>
+								<h:outputText value="#{livro.genero}" />
+							</p:column>
 
-			<!-- 				<p:column headerText="ISBN" sortBy="#{livro.isbn}"> -->
-			<!-- 					<h:outputText value="#{livro.isbn}" /> -->
-			<!-- 				</p:column> -->
+							<p:column headerText="ISBN" sortBy="#{livro.isbn}">
+								<h:outputText value="#{livro.isbn}" />
+							</p:column>
 
-			<!-- 				<p:column headerText="Preço" sortBy="#{livro.preco}" -->
-			<!-- 					filterFunction="#{livroBean.precoEhMenor}"> -->
-			<!-- 					retirado do p:column -->
-			<!-- 					filterBy="#{livro.preco}"  -->
-			<!-- 					<h:outputText value="#{livro.preco}"> -->
-			<!-- 						<f:convertNumber type="currency" pattern="R$ #0.00" -->
-			<!-- 							currencySymbol="R$" locale="pt_BR" /> -->
-			<!-- 					</h:outputText> -->
-			<!-- 				</p:column> -->
+							<p:column headerText="Preço" sortBy="#{livro.preco}"
+								filterFunction="#{livroBean.precoEhMenor}">
+								retirado do p:column
+								filterBy="#{livro.preco}" 
+								<h:outputText value="#{livro.preco}">
+									<f:convertNumber type="currency" pattern="R$ #0.00"
+										currencySymbol="R$" locale="pt_BR" />
+								</h:outputText>
+							</p:column>
 
-			<!-- 				<p:column headerText="Data" sortBy="#{livro.dataLancamento}"> -->
-			<!-- 					<h:outputText value="#{livro.dataLancamento.time}"> -->
-			<!-- 						<f:convertDateTime pattern="dd/MM/yyyy" -->
-			<!-- 							timeZone="America/Sao_Paulo" /> -->
-			<!-- 					</h:outputText> -->
-			<!-- 				</p:column> -->
+							<p:column headerText="Data" sortBy="#{livro.dataLancamento}">
+								<h:outputText value="#{livro.dataLancamento.time}">
+									<f:convertDateTime pattern="dd/MM/yyyy"
+										timeZone="America/Sao_Paulo" />
+								</h:outputText>
+							</p:column>
 
-			<!-- 				<p:column> -->
-			<!-- 					<f:facet name="header">Alterar</f:facet> -->
-			<!-- 					<h:commandLink value="altera" action="#{livroBean.carregar(livro)}" /> -->
-			<!-- 				</p:column> -->
+							<p:column>
+								<f:facet name="header">Alterar</f:facet>
+								<h:commandLink value="altera" action="#{livroBean.carregar(livro)}" />
+							</p:column>
 
-			<!-- 				<p:column> -->
-			<!-- 					<f:facet name="header">Remover</f:facet> -->
-			<!-- 					<h:commandLink value="remove" action="#{livroBean.remover(livro)}" /> -->
-			<!-- 				</p:column> -->
-			<!-- 			</p:dataTable> -->
+							<p:column>
+								<f:facet name="header">Remover</f:facet>
+								<h:commandLink value="remove" action="#{livroBean.remover(livro)}" />
+							</p:column>
+						</p:dataTable>
 
 			<!-- Fim LazyLoading -->
 
-			<p:dataTable value="#{livroBean.livros}" var="livro"
-				id="tabelaLivros" paginator="true" rows="5">
-				<f:facet name="header">Livros</f:facet>
-				<p:column headerText="Título" sortBy="#{livro.titulo}"
-					filterBy="#{livro.titulo}" filterMatchMode="startsWith">
-					<h:outputText value="#{livro.titulo}" />
-				</p:column>
-				<p:column headerText="ISBN" sortBy="#{livro.isbn}">
-					<h:outputText value="#{livro.isbn}" />
-				</p:column>
+<!-- 			<p:dataTable value="#{livroBean.livros}" var="livro" -->
+<!-- 				id="tabelaLivros" paginator="true" rows="5"> -->
+<!-- 				<f:facet name="header">Livros</f:facet> -->
+<!-- 				<p:column headerText="Título" sortBy="#{livro.titulo}" -->
+<!-- 					filterBy="#{livro.titulo}" filterMatchMode="startsWith"> -->
+<!-- 					<h:outputText value="#{livro.titulo}" /> -->
+<!-- 				</p:column> -->
+<!-- 				<p:column headerText="ISBN" sortBy="#{livro.isbn}"> -->
+<!-- 					<h:outputText value="#{livro.isbn}" /> -->
+<!-- 				</p:column> -->
 				
-				<p:column headerText="Preço" sortBy="#{livro.preco}">
-					<h:outputText value="#{livro.preco}">
-						<f:convertNumber type="currency" pattern="R$ #0.00"
-							currencySymbol="R$" locale="pt_BR" />
-					</h:outputText>
-				</p:column>
+<!-- 				<p:column headerText="Preço" sortBy="#{livro.preco}"> -->
+<!-- 					<h:outputText value="#{livro.preco}"> -->
+<!-- 						<f:convertNumber type="currency" pattern="R$ #0.00" -->
+<!-- 							currencySymbol="R$" locale="pt_BR" /> -->
+<!-- 					</h:outputText> -->
+<!-- 				</p:column> -->
 
-				<p:column headerText="Data" sortBy="#{livro.dataLancamento.time}">
-					<h:outputText value="#{livro.dataLancamento.time}">
-						<f:convertDateTime pattern="dd/MM/yyyy"
-							timeZone="America/Sao_Paulo" />
-					</h:outputText>
-				</p:column>
+<!-- 				<p:column headerText="Data" sortBy="#{livro.dataLancamento.time}"> -->
+<!-- 					<h:outputText value="#{livro.dataLancamento.time}"> -->
+<!-- 						<f:convertDateTime pattern="dd/MM/yyyy" -->
+<!-- 							timeZone="America/Sao_Paulo" /> -->
+<!-- 					</h:outputText> -->
+<!-- 				</p:column> -->
 
-				<p:column headerText="Alterar">
-					<p:commandButton update=":formLivro" process="@this"
-						value="alterar" actionListener="#{livroBean.carregar(livro)}"
-						icon="fa fa-fw fa-edit" />
-				</p:column>
+<!-- 				<p:column headerText="Alterar"> -->
+<!-- 					<p:commandButton update=":formLivro" process="@this" -->
+<!-- 						value="alterar" actionListener="#{livroBean.carregar(livro)}" -->
+<!-- 						icon="fa fa-fw fa-edit" /> -->
+<!-- 				</p:column> -->
 
-				<p:column headerText="Remover">
-					<p:commandButton update="@form" process="@this" value="remover"
-						actionListener="#{livroBean.remover(livro)}"
-						icon="fa fa-fw fa-remove" />
-				</p:column>
-			</p:dataTable>
+<!-- 				<p:column headerText="Remover"> -->
+<!-- 					<p:commandButton update="@form" process="@this" value="remover" -->
+<!-- 						actionListener="#{livroBean.remover(livro)}" -->
+<!-- 						icon="fa fa-fw fa-remove" /> -->
+<!-- 				</p:column> -->
+<!-- 			</p:dataTable> -->
 
 		</h:form>
 	</ui:define>
