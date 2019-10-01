@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.caelum.livraria.dao.UsuarioDao;
@@ -15,6 +16,9 @@ import br.com.caelum.livraria.modelo.Usuario;
 public class LoginBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private UsuarioDao usuarioDao;
 
 	private Usuario usuario = new Usuario();
 
@@ -27,7 +31,10 @@ public class LoginBean implements Serializable {
 				+ this.usuario.getEmail());
 
 		FacesContext context = FacesContext.getCurrentInstance();
-		boolean existe = new UsuarioDao().existe(this.usuario);
+		//boolean existe = new UsuarioDao().existe(this.usuario);
+		
+		boolean existe = usuarioDao.existe(this.usuario);
+		
 		if (existe) {
 			context.getExternalContext().getSessionMap()
 					.put("usuarioLogado", this.usuario);

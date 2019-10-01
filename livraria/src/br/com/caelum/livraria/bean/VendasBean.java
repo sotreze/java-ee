@@ -13,8 +13,7 @@ import javax.persistence.EntityManager;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 
-import br.com.caelum.livraria.dao.LivroDao;
-import br.com.caelum.livraria.modelo.Livro;
+import br.com.caelum.livraria.dao.VendaDao;
 import br.com.caelum.livraria.modelo.Venda;
 
 @Named
@@ -23,8 +22,13 @@ public class VendasBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	//@Inject
+	//EntityManager manager;
+	
 	@Inject
-	EntityManager manager;
+	private VendaDao vendaDao;
+	
+	private List<Venda> vendas;
 
 	public BarChartModel getVendasModel() {
 
@@ -44,9 +48,17 @@ public class VendasBean implements Serializable {
 		return model;
 	}
 
+//	public List<Venda> getVendas() {
+//
+//		List<Venda> vendas = this.vendaDao.createQuery("select v from Venda v", Venda.class).getResultList();
+//		return vendas;
+//	}
+	
 	public List<Venda> getVendas() {
 
-		List<Venda> vendas = this.manager.createQuery("select v from Venda v", Venda.class).getResultList();
+		if (this.vendas == null) {
+			this.vendas = this.vendaDao.listaTodos();
+		}
 		return vendas;
 	}
 }

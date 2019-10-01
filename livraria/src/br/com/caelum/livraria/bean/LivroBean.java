@@ -50,13 +50,20 @@ public class LivroBean implements Serializable {
 		return livro;
 	}
 
-	public List<Livro> getLivros() {
-
-		if (this.livros == null) {
-			this.livros = this.livroDao.listaTodos();
-		}
-		return livros;
-	}
+	
+	
+	
+//	public List<Livro> getLivros() {
+//
+//		if (this.livros == null) {
+//			this.livros = this.livroDao.listaTodos();
+//		}
+//		return livros;
+//	}
+	
+	public List getLivros() { 
+		this.livros = livroDao.listaTodos(); 
+		return livros; }
 
 	public List<Autor> getAutores() {
 		return this.autorDao.listaTodos();
@@ -110,7 +117,7 @@ public class LivroBean implements Serializable {
 
 	public void carregar(Livro livro) {
 		System.out.println("Carregando livro");
-		this.livro = livro;
+		this.livro = this.livroDao.buscaPorId(livro.getId());
 	}
 
 	public String formAutor() {
