@@ -6,7 +6,10 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
+<<<<<<< HEAD
 import javax.persistence.FetchType;
+=======
+>>>>>>> baadd827a5b1e3e594b10f3a48dfe0080e882125
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,8 +32,12 @@ public class Livro implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Calendar dataLancamento = Calendar.getInstance();
 
+<<<<<<< HEAD
 	//@ManyToMany
 	@ManyToMany(fetch = FetchType.EAGER)
+=======
+	@ManyToMany
+>>>>>>> baadd827a5b1e3e594b10f3a48dfe0080e882125
 	private List<Autor> autores = new ArrayList<Autor>();
 
 	public List<Autor> getAutores() {
@@ -56,10 +63,13 @@ public class Livro implements Serializable {
 		return titulo;
 	}
 
+<<<<<<< HEAD
 	public void setAutores(List<Autor> autores) {
 		this.autores = autores;
 	}
 
+=======
+>>>>>>> baadd827a5b1e3e594b10f3a48dfe0080e882125
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}

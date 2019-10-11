@@ -113,8 +113,11 @@ public class LivroBean implements Serializable {
 		System.out.println("Carregando livro");
 		this.livro = this.livroDao.buscaPorId(livro.getId());
 	}
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> baadd827a5b1e3e594b10f3a48dfe0080e882125
 
 	public String formAutor() {
 		System.out.println("Chamanda do formulário do Autor.");
