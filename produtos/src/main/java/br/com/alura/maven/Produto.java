@@ -19,4 +19,8 @@ public class Produto {
 		return preco;
 	}
 
+	public Double getPrecoComImposto() {
+		return preco * 1.10;
+	}
+
 }
