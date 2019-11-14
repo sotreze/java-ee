@@ -32,15 +32,14 @@ public class AdminLivrosBean {
 	private AutorDao autorDao;
 
 	@Transactional
-	public void salvar() {
+	public String salvar() {
         for(Integer autorId : autoresId){
             livro.getAutores().add(new Autor(autorId));
            }
 		dao.salvar(livro);
 		System.out.println("Livro cadastrado: " + livro);
 		
-		this.livro = new Livro();
-		this.autoresId = new ArrayList<>();
+		return "/livros/lista?faces-redirect=true"; // E retornamos a página que o usuário irá sem o .xhtml
     }
 	
 	public List<Autor> getAutores(){
