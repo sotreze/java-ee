@@ -1,10 +1,11 @@
 package br.com.casadocodigo.loja.beans;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
@@ -30,14 +31,20 @@ public class AdminLivrosBean {
 
 	@Inject
 	private AutorDao autorDao;
-
+	@Inject
+	private FacesContext context;
+	
 	@Transactional
 	public String salvar() {
         for(Integer autorId : autoresId){
             livro.getAutores().add(new Autor(autorId));
            }
 		dao.salvar(livro);
-		System.out.println("Livro cadastrado: " + livro);
+	    
+		context.getExternalContext()
+        .getFlash().setKeepMessages(true); // Aqui estamos ativando o FlashScope
+		context
+        .addMessage(null, new FacesMessage("Livro cadastrado com sucesso!"));
 		
 		return "/livros/lista?faces-redirect=true"; // E retornamos a página que o usuário irá sem o .xhtml
     }

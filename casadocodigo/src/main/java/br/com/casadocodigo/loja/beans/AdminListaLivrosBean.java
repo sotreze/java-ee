@@ -14,7 +14,7 @@ public class AdminListaLivrosBean {
 
     @Inject
     private LivroDao dao;
-
+  
     private List<Livro> livros = new ArrayList<>();
 
     public List<Livro> getLivros() {
