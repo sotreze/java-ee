@@ -10,6 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Livro {
@@ -17,13 +24,23 @@ public class Livro {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank // Valida já vazio e espeços em branco
     private String titulo;
+	
     @Lob
+    @Length(min=10) // Número mínimo de caracteres que o campo pode ter
+    @NotBlank
     private String descricao;
+    
+    @DecimalMin("20") // Valor decimal mínimo
 	private BigDecimal preco;
+	
+    @Min(50) // Valor inteiro mínimo
     private Integer numeroPaginas;
     
     @ManyToMany
+    @Size(min=1) // número mínimo de elementos na lista
+    @NotNull // A lista não pode ser nula
     private List<Autor> autores = new ArrayList<>();
     
 	public String getTitulo() {
