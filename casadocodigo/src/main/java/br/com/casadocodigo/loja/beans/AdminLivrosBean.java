@@ -40,7 +40,7 @@ public class AdminLivrosBean {
 	public String salvar() throws IOException {
 		dao.salvar(livro);
 		FileSaver fileSaver = new FileSaver();
-		livro.setCapaPath(fileSaver.write(capaLivro, "figuras"));
+		livro.setCapaPath(fileSaver.write(capaLivro, "livros"));
 		
 		context.getExternalContext()
         .getFlash().setKeepMessages(true); // Aqui estamos ativando o FlashScope
