@@ -38,4 +38,8 @@ public class LivroDao {
                 
     }
 
+	public Livro buscarPorId(Integer id) {
+		return manager.find(Livro.class, id);
+	}
+
 }
