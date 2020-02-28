@@ -7,10 +7,28 @@
 
 <h:head>
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="style-admin.css" />
 </h:head>
 
 <h:body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Casa do Código</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><h:link value="Lista" outcome="lista" /></li>
+				<li class="active"><a href="#">Cadastro</a></li>
+			</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+	</nav>
+
+	<div class="container">
+		<h1>Cadastro de Livros</h1>
 		<h:form enctype="multipart/form-data">
 			<div class="form-group">
 				<h:outputLabel value="Título" />
@@ -57,8 +75,8 @@
 				<h:inputFile value="#{adminLivrosBean.capaLivro}" id="capaLivro" />
 				<h:message for="capaLivro" />
 			</div>
-			<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}" 
-			styleClass="btn btn-primary" />
+			<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"
+				styleClass="btn btn-primary" />
 		</h:form>
 	</div>
 </h:body>
