@@ -8,8 +8,8 @@
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <f:metadata>
-    <f:viewParam id="id" name="id" value="#{livroDetalheBean.id}"/>
-    <f:viewAction action="#{livroDetalheBean.carregarDetalhe()}"/>
+    <f:viewParam value="#{livroDetalheBean.id}" name="id" />
+    <f:viewAction action="#{livroDetalheBean.carregaDetalhe()}" />
 </f:metadata>
 
 <head>
@@ -313,7 +313,7 @@
 </header>
 
 	
-<form action="https://www.casadocodigo.com.br/cart/add" method="POST" jsf:id="form-comprar" class="adicionarAoCarrinho">
+<form method="POST" class="adicionarAoCarrinho" jsf:id="form-comprar" >
 	<ul class="adicionarAoCarrinho-listaOfertas">
 		<li class="adicionarAoCarrinho-oferta" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
 			<label class="adicionarAoCarrinho-infosDaOferta" for="product-variant-2055441665">
@@ -336,7 +336,7 @@
 			</label>
 				<button class="adicionarAoCarrinho-botaoComprar" 
 					jsf:action="#{carrinhoComprasBean.add(livroDetalheBean.id)}"
-					type="submit" name="id" value="2055441665" title="Compre o E-book">
+					type="submit" title="Compre o E-book">
 					Comprar
 				</button>
 		</li>
