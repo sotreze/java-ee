@@ -1,6 +1,7 @@
 package br.com.casadocodigo.loja.models;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +24,20 @@ public class CarrinhoCompras implements Serializable {
 
 	public List<CarrinhoItem> getItens() {
 		return new ArrayList<CarrinhoItem>(itens);
+	}
+	
+	public BigDecimal getTotal(CarrinhoItem item) {
+	    return item.getLivro().getPreco().multiply(new BigDecimal(item.getQuantidade()));
+	}
+	
+	public BigDecimal  getTotal() {
+		BigDecimal total = BigDecimal.ZERO;
+		for (CarrinhoItem carrinhoItem : itens) {
+			total = total.add(carrinhoItem.getLivro().getPreco()
+					.multiply(new BigDecimal(carrinhoItem.getQuantidade())));
+		}
+		
+		return total;
 	}
 
 }
