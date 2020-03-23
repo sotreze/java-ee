@@ -61,10 +61,8 @@ public class CarrinhoCompras implements Serializable {
 		this.itens.remove(item);		
 	}
 
-	public void finalizar(Usuario usuario) {
-	    Compra compra = new Compra();
-	    compra.setUsuario(usuario);
-	    compra.setItens(this.toJson());
+	public void finalizar(Compra compra) {
+	    compra.setItens(toJson());
 	    compraDao.salvar(compra);
 	    
 	    String resultado = pagamentoGateway.pagar(getTotal());
