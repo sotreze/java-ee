@@ -4,7 +4,11 @@ import java.net.URI;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.jms.Destination;
+import javax.jms.JMSContext;
+import javax.jms.JMSProducer;
 import javax.servlet.ServletContext;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -17,7 +21,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
 import br.com.casadocodigo.loja.daos.CompraDao;
-import br.com.casadocodigo.loja.infra.MailSender;
 import br.com.casadocodigo.loja.models.Compra;
 
 @Path("/pagamento")
@@ -35,13 +38,18 @@ public class PagamentoService {
 	private static ExecutorService executor = Executors.newFixedThreadPool(50);
 	
 	@Inject
-	private MailSender mailSender;
+	private JMSContext jmsContext;
+	
+	@Resource(name="java:/jms/topics/CarrinhoComprasTopico")
+	private Destination destination;
 
 	@POST
 	public void pagar(@Suspended final AsyncResponse ar, @QueryParam("uuid") String uuid) {
 		Compra compra = compraDao.buscarPorUuid(uuid);
 
 		String contextPath = context.getContextPath();
+		
+		JMSProducer producer = jmsContext.createProducer(); 
 		
 		executor.submit(() -> {
 			try {
@@ -54,8 +62,7 @@ public class PagamentoService {
 				
 				Response response = Response.seeOther(responseUri).build();
 				
-				String messageBody = "Sua compra foi realizada com sucesso, com número de pedido " + compra.getUuid();
-				mailSender.send("compras@casadocodigo.com.br", compra.getUsuario().getEmail(), "Nova compra na CDC", messageBody);
+				producer.send(destination, compra.getUuid());
 				
 				ar.resume(response);
 			} catch (Exception e) {
