@@ -1,27 +1,50 @@
 package br.com.casadocodigo.loja.service;
 
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.inject.Inject;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
 
 import br.com.casadocodigo.loja.daos.CompraDao;
 import br.com.casadocodigo.loja.infra.MailSender;
 import br.com.casadocodigo.loja.models.Compra;
 
-public class EnviaEmailCompra {
-	
-    @Inject
-    private CompraDao compraDao;
-	
+@MessageDriven(activationConfig = {
+		@ActivationConfigProperty(
+				propertyName = "destinationLookup", 
+				propertyValue = "java:/jms/topics/CarrinhoComprasTopico"),
+	    @ActivationConfigProperty(
+	            propertyName="destinationType",
+	            propertyValue="javax.jms.Topic")		
+})
+public class EnviaEmailCompra implements MessageListener {
+
+	@Inject
+	private CompraDao compraDao;
+
 	@Inject
 	private MailSender mailSender;
-	
-	public void enviar(String uuid) {
-		
-		Compra compra = compraDao.buscarPorUuid(uuid);
-		String messageBody = "Sua compra foi realizada com sucesso, com número de pedido " + compra.getUuid();
-		
-		mailSender.send("compras@casadocodigo.com.br", compra.getUsuario().getEmail(), "Nova compra na CDC", messageBody);
-		
-		
+
+	public void onMessage(Message message) {
+
+		try {
+			TextMessage textMessage = (TextMessage) message;
+
+			Compra compra;
+			compra = compraDao.buscarPorUuid(textMessage.getText());
+
+			String messageBody = "Sua compra foi realizada com sucesso, com número de pedido " + compra.getUuid();
+
+			mailSender.send("compras@casadocodigo.com.br", compra.getUsuario().getEmail(), "Nova compra na CDC",
+					messageBody);
+
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
