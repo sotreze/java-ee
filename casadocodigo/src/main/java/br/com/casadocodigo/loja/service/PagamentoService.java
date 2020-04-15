@@ -55,14 +55,14 @@ public class PagamentoService {
 			try {
 				String resposta = pagamentoGateway.pagar(compra.getTotal());
 				System.out.println(resposta);
+				
+				producer.send(destination, compra.getUuid());
 
 				URI responseUri = UriBuilder
 						.fromPath("http://localhost:8080" + contextPath + "/index.xhtml")
 						.queryParam("msg", "Compra realizada com sucesso").build();
 				
-				Response response = Response.seeOther(responseUri).build();
-				
-				producer.send(destination, compra.getUuid());
+				Response response = Response.seeOther(responseUri).build();		
 				
 				ar.resume(response);
 			} catch (Exception e) {
