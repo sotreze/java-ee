@@ -11,24 +11,8 @@
 	<h:outputStylesheet library="css" name="style-admin.css" />
 </h:head>
 
-<h:body>
-
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Casa do Código</a>
-		</div>
-		<div id="navbar" class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Lista</a></li>
-				<li><h:link value="Cadastro" outcome="form" /></li>
-			</ul>
-		</div>
-		<!--/.nav-collapse -->
-	</div>
-	</nav>
-
-	<div class="container">
+<ui:composition template="/templates/_admin_template.xhtml">
+	<ui:define name="body">
 		<h1>Lista de Livros</h1>
 		<h:messages />
 
@@ -62,6 +46,6 @@
 					height="30%" alt="#{livro.titulo}" />
 			</h:column>
 		</h:dataTable>
-	</div>
-</h:body>
+	</ui:define>
+</ui:composition>
 </html>
