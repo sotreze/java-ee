@@ -324,7 +324,7 @@
 
 	<main>
 	<section class="infoSection container">
-		<h2 class="infoSection-titulo">Checkout</h2>
+		<h2 class="infoSection-titulo">Seu carrinho</h2>
 
 		<form method="post" jsf:id="formCheckout">
 			<div class="form-group">
@@ -340,33 +340,34 @@
 				<label>Senha</label> <input class="form-control" type="password"
 					placeholder="Senha" jsf:value="#{checkoutBean.usuario.senha}" />
 			</div>
+
 			<button class="btn btn-primary" type="submit"
-				jsf:action="#{checkoutBean.finalizar}" >Finalizar Compra</button>
-</form>
-	
-</section>
+				jsf:action="#{checkoutBean.finalizar}">Finalizar Compra</button>
+
+		</form>
+
+	</section>
 
 
 
-		<div class="
+	<div class="
 				buscaDoRodape container" role="presentation">
-				<form role="search" aria-labelledby="rotuloBuscaDoRodape"
-					action="https://www.casadocodigo.com.br/search" method="GET"
-					class="buscaDoRodape-formulario">
-					<label id="rotuloBuscaRodape" class="buscaDoRodape-rotuloEscondido"
-						for="campoBuscaRodape">Busque por autor, título,
-						conteúdo...</label> <label class="buscaDoRodape-rotulo"
-						for="campoBuscaRodape">Não encontrou o seu livro?</label>
-					<fieldset class="buscaDoRodape-fieldset">
-						<input type="hidden" name="type" value="product" /> <input
-							id="campoBuscaRodape" class="buscaDoRodape-campo"
-							placeholder="O que você procura?" type="search" name="q"
-							required="" aria-required="" />
-						<button class="buscaDoRodape-enviar" type="submit">
-							Buscar</button>
-					</fieldset>
-				</form>
-				</div>
+		<form role="search" aria-labelledby="rotuloBuscaDoRodape"
+			action="https://www.casadocodigo.com.br/search" method="GET"
+			class="buscaDoRodape-formulario">
+			<label id="rotuloBuscaRodape" class="buscaDoRodape-rotuloEscondido"
+				for="campoBuscaRodape">Busque por autor, título, conteúdo...</label>
+			<label class="buscaDoRodape-rotulo" for="campoBuscaRodape">Não
+				encontrou o seu livro?</label>
+			<fieldset class="buscaDoRodape-fieldset">
+				<input type="hidden" name="type" value="product" /> <input
+					id="campoBuscaRodape" class="buscaDoRodape-campo"
+					placeholder="O que você procura?" type="search" name="q"
+					required="" aria-required="" />
+				<button class="buscaDoRodape-enviar" type="submit">Buscar</button>
+			</fieldset>
+		</form>
+	</div>
 	</main>
 	<footer class="rodape">
 		<div class="container" role="presentation">

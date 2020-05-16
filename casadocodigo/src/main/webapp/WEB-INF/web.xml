@@ -24,6 +24,7 @@
 			<web-resource-name>administration</web-resource-name>
 			<description>URLs que levam para a adminstração da loja</description>
 			<url-pattern>/admin/*</url-pattern>
+			<url-pattern>/cart/*</url-pattern>
 			<http-method>GET</http-method>
 			<http-method>POST</http-method>
 		</web-resource-collection>

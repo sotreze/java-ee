@@ -27,6 +27,7 @@ public class CarrinhoCompras implements Serializable {
 	@Inject
 	private CompraDao compraDao;
 	
+	
 	public void add(CarrinhoItem item) {
 		itens.add(item);
 	}
@@ -52,20 +53,22 @@ public class CarrinhoCompras implements Serializable {
 	public Integer getQuantidadeTotal() {
 	    return itens.stream().mapToInt(item -> item.getQuantidade()).sum();
 	}
-
+	
 	public void remover(CarrinhoItem item) {
 		this.itens.remove(item);		
 	}
+	
 
 	public void finalizar(Compra compra) {
 	    compra.setItens(toJson());
 	    compra.setTotal(getTotal());
 	    compraDao.salvar(compra);
-	    
+
 	    
 //	    String resultado = pagamentoGateway.pagar(getTotal());
 //	    System.out.println(resultado);
 	}
+
 
 	public String toJson() {
 	    JsonArrayBuilder builder = Json.createArrayBuilder();

@@ -11,7 +11,7 @@
 	<ui:define name="body">
 
 		<title>#{livroDetalheBean.livro.titulo} - Casa do Código</title>
-	
+
 		<main>
 		<section class="infoSection container">
 			<h2 class="infoSection-titulo">Seu carrinho</h2>
@@ -52,8 +52,9 @@
 								</td>
 								<td
 									class="formularioDoCarrinho-item formularioDoCarrinho-item-precoTotal"
-									title="Preço unitário: R$ #{carrinhoItem.livro.preco}">R$
+									title="Preço unitário: R$ #{carrinhoItem.livro.preco}">
 									#{carrinhoCompras.getTotal(carrinhoItem)}</td>
+
 								<td class="formularioDoCarrinho-item"><a
 									jsf:action="#{carrinhoComprasBean.remover(carrinhoItem)}">
 										<img class="formularioDoCarrinho-item-remover-imagem"
@@ -647,8 +648,8 @@
 		<!-- </body> -->
 		<object id="988ba819-7a1a-af97-0988-b98b699195a2" width="0" height="0"
 			type="application/gas-events-uni"></object>
-			
-			
+
+
 	</ui:define>
-</ui:composition>			
+</ui:composition>
 </html>

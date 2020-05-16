@@ -38,8 +38,9 @@ public class EnviaEmailCompra implements MessageListener {
 
 			String messageBody = "Sua compra foi realizada com sucesso, com número de pedido " + compra.getUuid();
 
-			mailSender.send("compras@casadocodigo.com.br", compra.getUsuario().getEmail(), "Nova compra na CDC",
-					messageBody);
+			 mailSender.send("compras@casadocodigo.com.br",
+			 compra.getUsuario().getEmail(), "Nova compra na CDC", messageBody);
+			 
 
 		} catch (JMSException e) {
 			e.printStackTrace();

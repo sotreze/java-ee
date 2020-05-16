@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 
+
 @Entity
 public class Compra {
 
@@ -22,16 +23,18 @@ public class Compra {
 	private Usuario usuario;
 
 	private String itens;
-	
+
 	private String uuid;
 	
 	private BigDecimal total;
 	
+	private String usuarioLogado;
+
 	@PrePersist
 	public void createUUID() {
 		this.uuid = UUID.randomUUID().toString();
 	}
-
+		
 	public Integer getId() {
 		return id;
 	}
@@ -71,5 +74,14 @@ public class Compra {
 	public void setTotal(BigDecimal total) {
 		this.total = total;
 	}
-	
+
+	public String getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(String usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
+
 }
+

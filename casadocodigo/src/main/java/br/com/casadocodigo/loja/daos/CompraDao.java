@@ -1,6 +1,7 @@
 package br.com.casadocodigo.loja.daos;
 
 import java.io.Serializable;
+//import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,7 +14,15 @@ public class CompraDao implements Serializable {
 
 	@PersistenceContext
 	private EntityManager manager;
-
+	
+	/*
+	 * public List<Compra> listar(){ return
+	 * manager.createQuery("select * from Compra c where c.usuario_id = :usuario_id"
+	 * , Compra.class) .getResultList();
+	 * 
+	 * }
+	 */
+    
 	public void salvar(Compra compra) {
 		manager.persist(compra);
 	}
@@ -22,4 +31,5 @@ public class CompraDao implements Serializable {
 		return manager.createQuery("select c from Compra c where c.uuid = :uuid", Compra.class)
 				.setParameter("uuid", uuid).getSingleResult();
 	}
+	
 }

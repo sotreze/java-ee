@@ -16,5 +16,10 @@ public class SecurityDao {
 				.setParameter("email", email)
 				.getSingleResult();	
 	}
-
+	
+	/*
+	 * public SystemUser findById(Integer id) { return
+	 * manager.createQuery("select su from SystemUser su " + "where su.id = :id",
+	 * SystemUser.class) .setParameter("id", id) .getSingleResult(); }
+	 */
 }

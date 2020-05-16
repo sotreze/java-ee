@@ -23,7 +23,7 @@ public class CarrinhoComprasBean {
 		Livro livro = livroDao.buscarPorId(id);
 		CarrinhoItem item = new CarrinhoItem(livro);
 		carrinho.add(item);
-		return "carrinho?faces-redirect=true";
+		return "cart/carrinho?faces-redirect=true";
 	}
 	
 	public void remover(CarrinhoItem item) {
