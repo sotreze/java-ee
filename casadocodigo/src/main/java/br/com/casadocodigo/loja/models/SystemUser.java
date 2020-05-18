@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
 import org.hibernate.validator.constraints.Email;
@@ -19,6 +20,8 @@ public class SystemUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    //@JoinColumn(unique = true)
+    //so tem efeito quando cria o banco
     @Email
     private String email;
 
