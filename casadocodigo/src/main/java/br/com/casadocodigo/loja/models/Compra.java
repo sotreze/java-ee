@@ -1,6 +1,8 @@
 package br.com.casadocodigo.loja.models;
 
 import java.math.BigDecimal;
+//import java.util.ArrayList;
+//import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
@@ -25,16 +27,26 @@ public class Compra {
 	private String itens;
 
 	private String uuid;
-	
+
 	private BigDecimal total;
-	
+
 	private String usuarioLogado;
 
+	//private ArrayList<String> DescricaoLivro;
+	
+
+	/*
+	 * public ArrayList<String> getDescricaoLivro() { return DescricaoLivro; }
+	 * 
+	 * public void setDescricaoLivro(List<String> descricao) { DescricaoLivro =
+	 * (ArrayList<String>) descricao; }
+	 */
+	
 	@PrePersist
 	public void createUUID() {
 		this.uuid = UUID.randomUUID().toString();
 	}
-		
+
 	public Integer getId() {
 		return id;
 	}
@@ -82,6 +94,5 @@ public class Compra {
 	public void setUsuarioLogado(String usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 	}
-
+	
 }
-

@@ -14,7 +14,7 @@ public class AdminListaLivrosBean {
 
     @Inject
     private LivroDao dao;
-  
+    
     private List<Livro> livros = new ArrayList<>();
 
     public List<Livro> getLivros() {
@@ -22,4 +22,9 @@ public class AdminListaLivrosBean {
 
      return livros;
     }
+    
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
+	}
+    
 }

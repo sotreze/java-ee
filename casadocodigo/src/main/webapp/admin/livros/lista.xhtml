@@ -40,8 +40,11 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Capa Path</f:facet>
-				<img src="#{request.contextPath}/file/#{livro.capaPath}"
-					height="30%" alt="#{livro.titulo}" />
+				<a href="#{request.contextPath}/livro-detalhe.xhtml?id=#{livro.id}"
+					class="livroNaVitrine-link" title="#{livro.titulo}"><img
+					src="#{request.contextPath}/file/#{livro.capaPath}" height="30%"
+					alt="#{livro.titulo}" />
+				</a>
 			</h:column>
 		</h:dataTable>
 	</ui:define>
