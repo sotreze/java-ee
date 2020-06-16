@@ -3,6 +3,7 @@ package br.com.casadocodigo.loja.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,11 @@ public class SystemUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+	@Column(name = "primeiro_nome")
+	private String primeiroNome;
+    
+	private String sobrenome;
+	
     //@JoinColumn(unique = true)
     //so tem efeito quando cria o banco
     @Email
@@ -53,4 +59,20 @@ public class SystemUser {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	public String getPrimeiroNome() {
+        return primeiroNome;
+    }
+
+    public void setPrimeiroNome(String primeiroNome) {
+        this.primeiroNome = primeiroNome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
 }
