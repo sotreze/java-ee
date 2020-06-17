@@ -47,7 +47,7 @@ public class AdminLivrosBean {
 		context
         .addMessage(null, new FacesMessage("Livro cadastrado com sucesso!"));
 		
-		return "/livros/lista?faces-redirect=true"; // E retornamos a página que o usuário irá sem o .xhtml
+		return "/admin/livros/lista?faces-redirect=true"; // E retornamos a página que o usuário irá sem o .xhtml
     }
 
 
